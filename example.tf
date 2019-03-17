@@ -8,4 +8,8 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami           = "ami-00a5245b4816c38e6"
   instance_type = "t2.nano"
+
+  tags {
+    Name = "${format("tf-%02d", count.index + 1)}"
+  }
 }
